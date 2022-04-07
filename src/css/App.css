@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  background: #333;
+  color: white;
+}
+
+.slider_title {
+  font-size: 5vw;
+  color: #0cf;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.card-wrapper:active,
+.card-wrapper:hover,
+.card-wrapper:focus {
+  outline: none;
+  border: none;
+}
+
+.card {
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.card .card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #000;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.card .card-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.card:hover img {
+  opacity: 0.4;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.card:hover .card-image {
+  -webkit-transform: translateY(-100px);
+  transform: translateY(-100px);
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+
+.social-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.social-icons li {
+  list-style: none;
+}
+
+.social-icons li a {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #fff;
+  font-size: 23px;
+  color: #333;
+  font-weight: bold;
+  margin: 0 6px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transform: translateY(200px);
+  transform: translateY(200px);
+  opacity: 0;
+  border-radius: 15px;
+}
+
+.card:hover .social-icons li a {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.social-icons li a:hover {
+  background: #000;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.social-icons li a:hover .fa {
+  color: #fff;
+}
+
+.social-icons li a .fa {
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+
+.social-icons li a .fa:hover {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  color: #fff;
+}
+
+.card:hover li:nth-child(1) a {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.card:hover li:nth-child(2) a {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.card:hover li:nth-child(3) a {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.card:hover li:nth-child(4) a {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.details {
+  position: absolute;
+  bottom: 400px;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  height: 120px;
+  z-index: 1;
+  padding: 10px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.details h2 {
+  margin: 30px 0;
+  padding: 0;
+  text-align: center;
+  color: #333;
+}
+
+.details h2 .job-title {
+  font-size: 16px;
+  line-height: 2;
+  color: #333;
+  font-weight: 300;
+  display: block;
+}
+
+.card:hover .details {
+  bottom: 0;
+}
+
+.carousel .slick-dots {
+  bottom: -2.5vw;
+}
+
+.carousel .slick-dots li button {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+
+.carousel .slick-dots li button:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  content: "";
+  text-align: center;
+  opacity: 0.5;
+  color: #000;
+  background-color: #fff;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel .slick-dots li.slick-active button,
+.carousel .slick-dots li:hover button {
+  border-color: #0cf;
+}
+
+.carousel .slick-dots li.slick-active button:before,
+.carousel .slick-dots li:hover button:before {
+  background-color: #0cf;
+  opacity: 1;
+}
+
+.carousel .slick-prev,
+.carousel .slick-next {
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 25px;
+}
+
+.carousel .slick-prev:hover,
+.carousel .slick-prev:focus,
+.carousel .slick-next:hover,
+.carousel .slick-next:focus {
+  color: #000;
+  outline: none;
+  background: #000;
+}
+
+.carousel .slick-prev:before,
+.carousel .slick-next:before {
+  color: #0cf;
+  font-family: "Raleway", sans-serif;
+}
+
+.carousel .slick-next {
+  right: -300px;
+}
+
+.carousel .slick-prev {
+  left: -300px;
+}
+/*# sourceMappingURL=App.css.map */
+
+.logo {
+  background-color: transparent;
+  width: 100px;
+  transform: rotate(-30deg);
+  margin: 1rem 0 0rem 5rem;
+}
+
+.homeIcon {
+  background-color: #0cf;
+  width: 75px;
+  border-radius: 25px;
+  margin: 5rem;
+}
+
+h2 {
+  margin-left: 5rem;
+}
+
+textarea {
+  border: thin solid #dedede;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  outline: none;
+  display: inline-block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: transparent;
+}
+
+textarea {
+  font-family: inherit;
+  resize: none;
+}
+
+input[type="text"] {
+  border: thin solid #dedede;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  margin: 1rem 0rem 2rem 5rem;
+  outline: none;
+  display: inline;
+
+  width: 30rem;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: transparent;
+  color: #fff;
+}
+
+/* button [type="summit"],
+button [type="button"] */
+/* input[type="button"], */
+/* button[type="submit"]  */
+/* input[type="submit"]  */
+.button {
+  display: inline;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: none;
+  z-index: 1;
+  margin: 3rem 0rem 0rem 5rem;
+}
+.button:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0cf;
+  border-radius: 10rem;
+  z-index: -2;
+}
+.button:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #008fb3;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+.button:hover {
+  color: #fff;
+}
+.button:hover:before {
+  width: 100%;
+}
+
+input[type="button"]:disabled {
+  border-color: rgba(118, 118, 118, 0.3);
+  color: rgba(16, 16, 16, 0.3);
+  background-color: rgba(239, 239, 239, 0.3);
+  cursor: default;
+}
+
+.player-wrapper {
+  position: relative;
+  margin-top: 3rem;
+  /* margin-bottom: 4rem; */
+  /* padding-top: 56.25%; 720 / 1280 = 0.5625 */
+}
+
+.react-player {
+  display: inline;
+  position: absolute;
+  /* top: -20px; */
+  left: 5rem;
+}
+
+blockquote {
+  display: inline-block;
+  margin-left: 40%;
+  margin-right: 5rem;
+  margin-bottom: 3rem;
+  white-space: pre-wrap;
+  column-count: 4;
+  min-height: 500px;
+}
+
+.artist {
+  position: absolute;
+  display: inline;
+  margin: 0 5rem;
+  align-items: flex-start;
+  padding-bottom: 5rem;
+}
+
+.biography {
+  display: inline-block;
+  width: 50%;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-right: 5rem;
+  margin-bottom: 5rem;
+}
+
+.biography img {
+  border-radius: 10px;
+}
+
+footer {
+  display: inline-block;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+a {
+  color: #0cf;
+}
+
+footer.main {
+	/* background: #008fb3 url('../images/bg-tile-brown.gif') top left repeat; */
+  background-color: #008fb3;
+	color: #f2f3ee;
+	padding: 10px 0 70px 0;
+}
+
+footer.main a:hover {
+	color: #f2f3ee;
+}
+
+.uncopyright, .credits {
+	width: 400px;
+	float: left;
+	padding: 10px 0 10px 50px;
+}
+
+.uncopyright {
+	background: url('../images/icon-recycle.png') center left no-repeat;
+}
+
+.credits {
+	background: url('../images/icon-apple.png') center left no-repeat;
+	float: right;
+	margin: 9px;
+}
