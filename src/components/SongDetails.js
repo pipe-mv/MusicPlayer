@@ -2,8 +2,9 @@ import Message from "./Message";
 import SongArtist from "./SongArtist";
 import SongLyric from "./SongLyric";
 
-const SongDetails = ({ search, lyric, bio, songYouTube, favId, youTubeId }) => {
-  console.log(search, lyric, bio, songYouTube, favId, youTubeId);
+const SongDetails = ({ search, lyric, bio, songYouTube }) => {
+  // console.log(search, lyric, bio, songYouTube);
+
   if (!lyric || !bio) return null;
   return (
     <div>
@@ -12,7 +13,7 @@ const SongDetails = ({ search, lyric, bio, songYouTube, favId, youTubeId }) => {
           msg={`Error: The song "<em>${search.song}</em>" does not exist`}
         />
       ) : (
-        <SongLyric title={search.song} lyric={lyric.lyrics} songYouTube={songYouTube} favId={favId} youTubeId={youTubeId} />
+        <SongLyric lyric={lyric.lyrics} songYouTube={songYouTube} />
       )}
       {bio.artists ? (
         <SongArtist artist={bio.artists[0]} />

@@ -1,6 +1,4 @@
 import FavSongTableRow from "./FavSongTableRow";
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from "react-responsive-carousel";
 import { useHistory } from "react-router-dom";
 
 import React from "react";
@@ -12,9 +10,9 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
   let history = useHistory();
 
   const handleDirection = (id) => {
-    console.log(id);
+    // console.log(id);
     history.push(`/${id}`);
-    favId(id)
+    favId(id);
   };
 
   let settings = {
@@ -23,7 +21,6 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
     dots: true,
     infinite: true,
     centerPadding: "20px",
-    // height: "200px",
     slidesToShow: mySongs.length - 1 > 7 ? 7 : mySongs.length - 1,
     swipeToSlide: false,
     afterChange: function (index) {

@@ -1,14 +1,7 @@
-// import { useHistory } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 const FavSongTableRow = ({ id, elem, handleDeleteSong, handleDirection }) => {
-  // console.log(elem);
-
-  // export const favId = id
-  // export {favId}
-
   let { bio, search } = elem;
 
   let avatar = bio.artists[0].strArtistThumb;
@@ -43,5 +36,4 @@ const FavSongTableRow = ({ id, elem, handleDeleteSong, handleDirection }) => {
   );
 };
 
-// export {id}
 export default FavSongTableRow;

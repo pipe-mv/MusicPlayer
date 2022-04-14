@@ -1,5 +1,3 @@
-// import ImageSlider from "./components/Slider";
-// import Footer from "./components/Footer";
 import SongSearch from "./components/SongSearch";
 import "./css/App.css";
 
@@ -7,7 +5,6 @@ function App() {
   return (
     <div>
       <SongSearch />
-      {/* <Footer/> */}
     </div>
   );
 }

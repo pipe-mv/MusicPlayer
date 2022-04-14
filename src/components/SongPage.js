@@ -6,9 +6,9 @@ const SongPage = ({ mySongs }) => {
 //   console.log(id, mySongs);
 //   console.log(mySongs[id]);
   let currentSong = mySongs[id];
-  let { search, lyric, bio } = currentSong;
+  let { search, lyric, bio, songYouTube } = currentSong;
   
-  return <SongDetails search={search} lyric={lyric} bio={bio} />;
+  return <SongDetails search={search} lyric={lyric} bio={bio} songYouTube={songYouTube} />;
   
 };
 
