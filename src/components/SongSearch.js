@@ -21,7 +21,7 @@ const mySongsInit = JSON.parse(localStorage.getItem("mySongs")) || [];
 
 const SongSearch = () => {
   //Controls the singer and song search, if there's not singer or song it will be kept "null" in order to not show the artist
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState("");
   //Handles the lyric of the artist's song
   const [lyric, setLyric] = useState(null);
   //Handles the information of the artist
@@ -77,6 +77,7 @@ const SongSearch = () => {
     localStorage.setItem("mySongs", JSON.stringify(mySongs));
   }, [search, mySongs]);
 
+  // console.log(youTubeId);
   const handleSearch = (data) => {
     // console.log(data);
     setSearch(data);
@@ -180,7 +181,14 @@ const SongSearch = () => {
             <Route
               exact
               path="/:id"
-              children={<SongPage mySongs={mySongs} />}
+              children={
+                <SongPage
+                  mySongs={mySongs}
+                  songYouTube={songYouTube}
+                  favId={favIdSelected}
+                  youTubeId={youTubeId}
+                />
+              }
             ></Route>
             <Route path="*" children={<Error404 />} />
           </Switch>

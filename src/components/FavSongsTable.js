@@ -1,6 +1,5 @@
 import FavSongTableRow from "./FavSongTableRow";
 import { useHistory } from "react-router-dom";
-
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -30,7 +29,7 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
     },
   };
 
-  console.log(mySongs);
+  // console.log(mySongs);
   return (
     <Slider {...settings}>
       {mySongs.length > 0 ? (
