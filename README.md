@@ -4,7 +4,7 @@ You can check out the link for this project: https://pipe-mv.github.io/MusicPlay
 
 ### What is this?
 
-This is a repo that houses the base code for a React.js film application. By the final stage of the project, the film app will have a list of all the recent popular movies; a user can scroll through them, click one for more details, and save it to their favorites.
+This is a repo that houses the base code for a React.js application. By the final stage of the project, the Music Player app will have a list of all the recent popular movies; a user can scroll through them, click one for more details, and save it to their favorites.
 
 ![](./src/images/LandingPage.png)
 
