@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.9c0301cb.css",
-    "main.js": "/static/js/main.d10afdc3.js",
-    "static/js/787.0fe84981.chunk.js": "/static/js/787.0fe84981.chunk.js",
-    "static/media/Logo.png": "/static/media/Logo.71beeb02d02b0148d095.png",
-    "static/media/home2.png": "/static/media/home2.fea6e67cd887ad2b9a57.png",
-    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/index.html",
-    "main.9c0301cb.css.map": "/static/css/main.9c0301cb.css.map",
-    "main.d10afdc3.js.map": "/static/js/main.d10afdc3.js.map",
-    "787.0fe84981.chunk.js.map": "/static/js/787.0fe84981.chunk.js.map"
+    "main.css": "/MusicPlayer/static/css/main.b10f2c67.css",
+    "main.js": "/MusicPlayer/static/js/main.eccae578.js",
+    "static/js/787.0fe84981.chunk.js": "/MusicPlayer/static/js/787.0fe84981.chunk.js",
+    "static/media/Logo.png": "/MusicPlayer/static/media/Logo.71beeb02d02b0148d095.png",
+    "static/media/home.png": "/MusicPlayer/static/media/home.fea6e67cd887ad2b9a57.png",
+    "static/media/slick.svg": "/MusicPlayer/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/MusicPlayer/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/MusicPlayer/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/MusicPlayer/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/MusicPlayer/index.html",
+    "main.b10f2c67.css.map": "/MusicPlayer/static/css/main.b10f2c67.css.map",
+    "main.eccae578.js.map": "/MusicPlayer/static/js/main.eccae578.js.map",
+    "787.0fe84981.chunk.js.map": "/MusicPlayer/static/js/787.0fe84981.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c0301cb.css",
-    "static/js/main.d10afdc3.js"
+    "static/css/main.b10f2c67.css",
+    "static/js/main.eccae578.js"
   ]
 }
