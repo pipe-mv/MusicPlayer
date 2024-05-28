@@ -4,7 +4,7 @@ You can check out the link for this project: https://pipe-mv.github.io/MusicPlay
 
 ### What is this?
 
-This is a repo that houses the base code for a React.js application. The Music Player app will allow the user to search and play the video of any song. Additionally it will allow the users to save theirs favorite songs in a carousel easy to scroll and search for the favorite song once it is saved!
+This is a repo that houses the base code for a React.js application. The Music Player app will allow the user to search and play the video of any song. Additionally it will display the lyrics and information about the singer or band. Also, allow the users to save theirs favorite songs in a carousel which make it easy to scroll and select the favorite song once it is saved!
 
 ![](./src/images/LandingPage.png)
 
