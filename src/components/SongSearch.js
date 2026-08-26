@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { HashRouter, Link, Switch, Route } from "react-router-dom";
+import { HashRouter, Link, Routes, Route } from "react-router-dom";
 import FavSongTable from "./FavSongsTable";
 import SongDetails from "./SongDetails";
 import SongForm from "./SongForm";
@@ -46,9 +46,8 @@ const SongSearch = () => {
       let artistUrl = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${artist}`;
       let songUrl = `https://api.lyrics.ovh/v1/${artist}/${song}`;
 
-      let playerSearch = `https://www.googleapis.com/youtube/v3/search?maxResults=1&relevanceLanguage=en&regionCode=AU&topicId=/m/04rlf&part=snippet&q=${artist}%20${song}&key=${YOUTUBE_API}`;
-      // console.log(playerSearch);
-
+      let playerSearch = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${artist}%20${song}&type=video&maxResults=3&key=${YOUTUBE_API}&quotaUser=test789`;
+      // let playerSearch = `https://www.googleapis.com/youtube/v3/search?maxResults=1&relevanceLanguage=en&regionCode=AU&topicId=/m/04rlf&part=snippet&q=${artist}%20${song}&key=${YOUTUBE_API}`;
       setLoading(true);
 
       const [artistRes, songRes] = await Promise.all([
@@ -65,9 +64,8 @@ const SongSearch = () => {
         setLoading(false);
         return;
       }
-
       const playerRes = await Promise.all([helpHttp().get(playerSearch)]);
-      // console.log(playerRes);
+      console.log(playerRes);
 
       setSongYouTube(playerRes[0]);
       setYouTubeId(playerRes[0].items[0].id.videoId);
@@ -140,7 +138,9 @@ const SongSearch = () => {
 
   return (
     <div>
-      <HashRouter>
+      <HashRouter
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <img className="logo" src={Logo} alt="Music logo"></img>
 
         <div className="container mt-5 carousel">
@@ -158,30 +158,34 @@ const SongSearch = () => {
         </header>
         {/* {song} */}
         <article>
-          <Switch>
-            <Route exact path="/">
-              <h2>Song Search</h2>
-              <SongForm
-                handleSearch={handleSearch}
-                handleSaveSong={handleSaveSong}
-                // songs={song}
-              />
-              {loading && <Loader />}
-              {search && !loading && (
-                <SongDetails
-                  search={search}
-                  lyric={lyric}
-                  bio={bio}
-                  songYouTube={songYouTube}
-                  favId={favIdSelected}
-                  youTubeId={youTubeId}
-                />
-              )}
-            </Route>
+          <Routes>
             <Route
-              exact
+              path="/"
+              element={
+                <>
+                  <h2>Song Search</h2>
+                  <SongForm
+                    handleSearch={handleSearch}
+                    handleSaveSong={handleSaveSong}
+                    // songs={song}
+                  />
+                  {loading && <Loader />}
+                  {search && !loading && (
+                    <SongDetails
+                      search={search}
+                      lyric={lyric}
+                      bio={bio}
+                      songYouTube={songYouTube}
+                      favId={favIdSelected}
+                      youTubeId={youTubeId}
+                    />
+                  )}
+                </>
+              }
+            />
+            <Route
               path="/:id"
-              children={
+              element={
                 <SongPage
                   mySongs={mySongs}
                   songYouTube={songYouTube}
@@ -189,9 +193,9 @@ const SongSearch = () => {
                   youTubeId={youTubeId}
                 />
               }
-            ></Route>
-            <Route path="*" children={<Error404 />} />
-          </Switch>
+            />
+            <Route path="*" element={<Error404 />} />
+          </Routes>
         </article>
         <Footer />
       </HashRouter>

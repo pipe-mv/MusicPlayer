@@ -16,7 +16,7 @@ export const helpHttp = () => {
     if (!options.body) delete options.body;
 
     //console.log(options);
-    setTimeout(() => controller.abort(), 3000);
+    setTimeout(() => controller.abort(), 10000);
 
     return fetch(endpoint, options)
       .then((res) =>
@@ -28,7 +28,7 @@ export const helpHttp = () => {
               statusText: res.statusText || "An error has ocurred!!!",
             })
       )
-      .catch((err) => err);
+      .catch((err) => console.error(err));
   };
 
   const get = (url, options = {}) => customFetch(url, options);

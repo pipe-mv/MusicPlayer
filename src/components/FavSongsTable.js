@@ -1,16 +1,16 @@
 import FavSongTableRow from "./FavSongTableRow";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleDirection = (id) => {
     // console.log(id);
-    history.push(`/${id}`);
+    navigate(`/${id}`);
     favId(id);
   };
 
