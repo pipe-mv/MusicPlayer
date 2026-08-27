@@ -4,17 +4,25 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import type { Settings } from "react-slick";
+import type { FavoriteSong } from "../types/music";
 
-const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
-  let navigate = useNavigate();
+interface FavSongsTableProps {
+  mySongs: FavoriteSong[];
+  handleDeleteSong: (id: number) => void;
+  favId: (id: number) => void;
+}
 
-  const handleDirection = (id) => {
+const FavSongTable = ({ mySongs, handleDeleteSong, favId }: FavSongsTableProps) => {
+  const navigate = useNavigate();
+
+  const handleDirection = (id: number) => {
     // console.log(id);
     navigate(`/${id}`);
     favId(id);
   };
 
-  let settings = {
+  const settings: Settings = {
     className: "center",
     centerMode: true,
     dots: true,
@@ -22,7 +30,7 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
     centerPadding: "20px",
     slidesToShow: mySongs.length - 1 > 7 ? 7 : mySongs.length - 1,
     swipeToSlide: false,
-    afterChange: function (index) {
+    afterChange: function (index: number) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
       );
@@ -44,7 +52,7 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }) => {
         ))
       ) : (
         <div className="container mt-5 carousel">
-          <h3 colSpan="4">There are not favourite songs</h3>
+          <h3>There are not favourite songs</h3>
         </div>
       )}
     </Slider>

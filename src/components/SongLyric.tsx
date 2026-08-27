@@ -1,6 +1,12 @@
 import ReactPlayer from "react-player";
+import type { YouTubeSearchResponse } from "../types/music";
 
-const SongLyric = ({ title, lyric, songYouTube }) => {
+interface SongLyricProps {
+  lyric?: string;
+  songYouTube: YouTubeSearchResponse;
+}
+
+const SongLyric = ({ lyric, songYouTube }: SongLyricProps) => {
   const videos = songYouTube?.items ?? [];
 
   return (
