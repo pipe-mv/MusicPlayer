@@ -1,6 +1,5 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import type { MouseEvent } from "react";
 import type { FavoriteSong } from "../../domain/types";
 
 interface FavoriteSongCardProps {
@@ -20,14 +19,6 @@ const FavoriteSongCard = ({
 
   const avatar = bio.artists?.[0]?.strArtistThumb ?? "";
 
-  const handleAction = (
-    event: MouseEvent<HTMLAnchorElement>,
-    action: (songId: number) => void
-  ) => {
-    event.preventDefault();
-    action(id);
-  };
-
   return (
     <div className="card-wrapper">
       <div className="card">
@@ -36,14 +27,22 @@ const FavoriteSongCard = ({
         </div>
         <ul className="social-icons">
           <li>
-            <a href={`#/${id}`} onClick={(event) => handleAction(event, handleDirection)}>
-              <i className="fa fa-eye"></i>
-            </a>
+            <button
+              type="button"
+              aria-label={`View ${search.song} by ${search.artist}`}
+              onClick={() => handleDirection(id)}
+            >
+              <i className="fa fa-eye" aria-hidden="true"></i>
+            </button>
           </li>
           <li>
-            <a href="#delete" onClick={(event) => handleAction(event, handleDeleteSong)}>
-              <i className="fa fa-trash"></i>
-            </a>
+            <button
+              type="button"
+              aria-label={`Delete ${search.song} by ${search.artist}`}
+              onClick={() => handleDeleteSong(id)}
+            >
+              <i className="fa fa-trash" aria-hidden="true"></i>
+            </button>
           </li>
         </ul>
         <div className="details">

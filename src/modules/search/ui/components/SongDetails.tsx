@@ -20,7 +20,7 @@ const SongDetails = ({ search, lyric, bio, songYouTube }: SongDetailsProps) => {
 
   if (!lyric || !bio) return null;
   return (
-    <div>
+    <div className="song-details">
       {lyric.error || lyric.err || lyric.name === "AbortError" ? (
         <Message
           msg={`Error: The song "<em>${search.song}</em>" does not exist`}

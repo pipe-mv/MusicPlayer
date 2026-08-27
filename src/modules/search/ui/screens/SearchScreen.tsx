@@ -27,8 +27,8 @@ const SearchScreen = ({
   onSearch,
   onSave,
 }: SearchScreenProps) => (
-  <>
-    <h2>Song Search</h2>
+  <section className="search-screen">
+    <h1 className="section-title">Song Search</h1>
     <SongForm onSearch={onSearch} onSave={onSave} />
     {loading && <Loader />}
     {search && !loading && (
@@ -39,7 +39,7 @@ const SearchScreen = ({
         songYouTube={songYouTube}
       />
     )}
-  </>
+  </section>
 );
 
 export default SearchScreen;
