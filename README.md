@@ -1,24 +1,149 @@
-# Music Player
+# MusicPlayer
 
-You can check out the link for this project: https://pipe-mv.github.io/MusicPlayer/
+A responsive React and TypeScript application for discovering music. Search by
+artist and song to watch matching YouTube videos, read lyrics, learn about the
+artist, and save favourite songs for later.
 
-### What is this?
+[View the live application](https://pipe-mv.github.io/MusicPlayer/)
 
-This is a repo that houses the base code for a React.js application. The Music Player app will allow the user to search and play the video of any song. Additionally it will display the lyrics and information about the singer or band. Also, allow the users to save theirs favorite songs in a carousel which make it easy to scroll and select the favorite song once it is saved!
+![MusicPlayer application preview](./src/images/LandingPage.png)
 
-![](./src/images/LandingPage.png)
+## Features
 
-## Clone the repository
+- Search for songs by artist and title.
+- Watch matching videos with the embedded YouTube player.
+- Read song lyrics and artist information.
+- Save and remove favourite songs in browser storage.
+- Browse favourites in a responsive carousel.
+- Use the application across phone, tablet, and desktop screen sizes.
+- Navigate directly to saved song details with client-side routing.
 
-### Create a .env file inside the main directory
+## Technology
 
-1. Create a .env file just like .env file
-2. Take your Application Key from (https://developers.google.com/youtube/v3) website (sign up for the API and then you will get the necessary id and key for the .env) and fill out the variable with the name REACT_APP_YOUTUBE_API_KEY in the .env file.
+- React 19
+- TypeScript
+- React Router
+- React Player
+- React Slick
+- Create React App
+- GitHub Actions
+- GitHub Pages
 
-Then run:
+## External services
 
-#### "npm install"
+MusicPlayer combines information from the following services:
 
-Finally, run:
+- [YouTube Data API](https://developers.google.com/youtube/v3) for video search.
+- [Lyrics.ovh](https://lyricsovh.docs.apiary.io/) for song lyrics.
+- [TheAudioDB](https://www.theaudiodb.com/api_guide.php) for artist details.
 
-#### "npm run start"
+Availability and search results depend on these external services.
+
+## Getting started
+
+### Requirements
+
+- Node.js 22
+- npm
+- A YouTube Data API browser key
+
+### Installation
+
+Clone the repository and install its dependencies:
+
+```bash
+git clone https://github.com/pipe-mv/MusicPlayer.git
+cd MusicPlayer
+npm install
+```
+
+Create a `.env` file in the project root:
+
+```env
+REACT_APP_YOUTUBE_API_KEY=your_youtube_api_key
+```
+
+Start the development server:
+
+```bash
+npm start
+```
+
+The application will be available at
+`http://localhost:3000/MusicPlayer/`.
+
+## API key security
+
+The YouTube key is used by a browser application and is therefore visible in
+the compiled frontend. Protect it in Google Cloud by:
+
+- Restricting the key to the YouTube Data API v3.
+- Adding HTTP referrer restrictions for the production and local URLs.
+- Setting API quotas and monitoring usage.
+- Keeping `.env` files out of Git.
+
+Never commit `.env` files or OAuth client-secret JSON files.
+
+## Available commands
+
+```bash
+npm start
+```
+
+Runs the local development server.
+
+```bash
+npm run typecheck
+```
+
+Checks the TypeScript source without producing build files.
+
+```bash
+npm test -- --watchAll=false
+```
+
+Runs the test suite once.
+
+```bash
+npm run build
+```
+
+Creates an optimized production build.
+
+## Architecture
+
+The source uses a feature-oriented architecture. Search and favourites are
+independent modules with four primary layers:
+
+- `domain` defines feature data and types.
+- `application` contains hook controllers and feature coordination.
+- `infrastructure` integrates APIs and browser storage.
+- `ui` contains screens and presentation components.
+
+Shared utilities and components live under `src/shared`, while `src/app/App.tsx`
+connects routes and features.
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the complete structure and file
+placement guidance.
+
+## Continuous integration and deployment
+
+Pull requests targeting `main` must pass:
+
+- TypeScript checking
+- Automated tests
+- Production build verification
+
+After changes are merged into `main`, GitHub Actions repeats the checks, builds
+the application with the production YouTube API secret, and deploys the build
+artifact to GitHub Pages. A failed verification prevents deployment.
+
+## Data persistence
+
+Favourite songs are stored in the browser's `localStorage`. They remain on the
+same browser and device, but they are not synchronized between devices or user
+accounts.
+
+## Author
+
+Created and maintained by [Felipe Marin](https://github.com/pipe-mv).
