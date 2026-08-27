@@ -1,8 +1,21 @@
 import Message from "./Message";
 import SongArtist from "./SongArtist";
 import SongLyric from "./SongLyric";
+import type {
+  ArtistResponse,
+  LyricResponse,
+  SongSearchData,
+  YouTubeSearchResponse,
+} from "../types/music";
 
-const SongDetails = ({ search, lyric, bio, songYouTube }) => {
+interface SongDetailsProps {
+  search: SongSearchData;
+  lyric: LyricResponse | null;
+  bio: ArtistResponse | null;
+  songYouTube: YouTubeSearchResponse | null;
+}
+
+const SongDetails = ({ search, lyric, bio, songYouTube }: SongDetailsProps) => {
   // console.log(search, lyric, bio, songYouTube);
 
   if (!lyric || !bio) return null;
@@ -13,7 +26,9 @@ const SongDetails = ({ search, lyric, bio, songYouTube }) => {
           msg={`Error: The song "<em>${search.song}</em>" does not exist`}
         />
       ) : (
-        <SongLyric lyric={lyric.lyrics} songYouTube={songYouTube} />
+        songYouTube && (
+          <SongLyric lyric={lyric.lyrics} songYouTube={songYouTube} />
+        )
       )}
       {bio.artists ? (
         <SongArtist artist={bio.artists[0]} />

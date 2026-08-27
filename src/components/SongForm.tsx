@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import type { SongSearchData } from "../types/music";
 
-const SongForm = ({ handleSearch, handleSaveSong }) => {
-  const initialForm = {
-    artist: "",
-    song: "",
-  };
+interface SongFormProps {
+  handleSearch: (data: SongSearchData) => void;
+  handleSaveSong: () => void;
+}
 
-  const [form, setForm] = useState(initialForm);
+const initialForm: SongSearchData = {
+  artist: "",
+  song: "",
+};
+
+const SongForm = ({ handleSearch, handleSaveSong }: SongFormProps) => {
+  const [form, setForm] = useState<SongSearchData>(initialForm);
   const [isDisable, setIsDisable] = useState(true);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!form.artist || !form.song) {

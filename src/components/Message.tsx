@@ -1,5 +1,11 @@
-const Message = ({ msg, bgColor }) => {
-  let styles = {
+import type { CSSProperties } from "react";
+
+interface MessageProps {
+  msg: string;
+}
+
+const Message = ({ msg }: MessageProps) => {
+  const styles: CSSProperties = {
     padding: "1rem",
     marginBottom: "1rem",
     textAlign: "center",
