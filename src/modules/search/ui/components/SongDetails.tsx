@@ -1,4 +1,4 @@
-import Message from "./Message";
+import Message from "../../../../shared/ui/Message";
 import SongArtist from "./SongArtist";
 import SongLyric from "./SongLyric";
 import type {
@@ -6,7 +6,7 @@ import type {
   LyricResponse,
   SongSearchData,
   YouTubeSearchResponse,
-} from "../types/music";
+} from "../../domain/types";
 
 interface SongDetailsProps {
   search: SongSearchData;

@@ -9,7 +9,7 @@ type HttpOptions = Omit<RequestInit, "body"> & { body?: unknown };
 export const isHttpError = (value: unknown): value is HttpError =>
   typeof value === "object" && value !== null && "err" in value;
 
-export const helpHttp = () => {
+export const httpClient = () => {
   const customFetch = async <T>(
     endpoint: string,
     options: HttpOptions = {}

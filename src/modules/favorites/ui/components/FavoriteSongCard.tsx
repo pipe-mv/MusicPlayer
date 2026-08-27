@@ -1,21 +1,21 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import type { MouseEvent } from "react";
-import type { FavoriteSong } from "../types/music";
+import type { FavoriteSong } from "../../domain/types";
 
-interface FavSongTableRowProps {
+interface FavoriteSongCardProps {
   id: number;
   elem: FavoriteSong;
   handleDeleteSong: (id: number) => void;
   handleDirection: (id: number) => void;
 }
 
-const FavSongTableRow = ({
+const FavoriteSongCard = ({
   id,
   elem,
   handleDeleteSong,
   handleDirection,
-}: FavSongTableRowProps) => {
+}: FavoriteSongCardProps) => {
   const { bio, search } = elem;
 
   const avatar = bio.artists?.[0]?.strArtistThumb ?? "";
@@ -56,4 +56,4 @@ const FavSongTableRow = ({
   );
 };
 
-export default FavSongTableRow;
+export default FavoriteSongCard;

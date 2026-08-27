@@ -1,4 +1,4 @@
-import type { Artist } from "../types/music";
+import type { Artist } from "../../domain/types";
 
 interface SongArtistProps {
   artist: Artist;
