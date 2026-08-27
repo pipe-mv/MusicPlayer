@@ -36,7 +36,7 @@ export interface YouTubeSearchResponse {
   items: YouTubeVideo[];
 }
 
-export interface FavoriteSong {
+export interface SongSearchResult {
   search: SongSearchData;
   lyric: LyricResponse;
   bio: ArtistResponse;

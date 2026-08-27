@@ -1,9 +1,9 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import type { SongSearchData } from "../types/music";
+import type { SongSearchData } from "../../domain/types";
 
 interface SongFormProps {
-  handleSearch: (data: SongSearchData) => void;
-  handleSaveSong: () => void;
+  onSearch: (data: SongSearchData) => void;
+  onSave: () => void;
 }
 
 const initialForm: SongSearchData = {
@@ -11,7 +11,7 @@ const initialForm: SongSearchData = {
   song: "",
 };
 
-const SongForm = ({ handleSearch, handleSaveSong }: SongFormProps) => {
+const SongForm = ({ onSearch, onSave }: SongFormProps) => {
   const [form, setForm] = useState<SongSearchData>(initialForm);
   const [isDisable, setIsDisable] = useState(true);
 
@@ -30,7 +30,7 @@ const SongForm = ({ handleSearch, handleSaveSong }: SongFormProps) => {
       setIsDisable(true);
       return;
     }
-    handleSearch(form);
+    onSearch(form);
     setForm(initialForm);
     setIsDisable(false);
   };
@@ -60,7 +60,7 @@ const SongForm = ({ handleSearch, handleSaveSong }: SongFormProps) => {
         {!isDisable ? (
           <button
             type="button"
-            onClick={handleSaveSong}
+            onClick={onSave}
             value="Add to Favorites"
             className="button"
           >

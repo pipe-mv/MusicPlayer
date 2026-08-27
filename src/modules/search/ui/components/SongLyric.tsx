@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import type { YouTubeSearchResponse } from "../types/music";
+import type { YouTubeSearchResponse } from "../../domain/types";
 
 interface SongLyricProps {
   lyric?: string;

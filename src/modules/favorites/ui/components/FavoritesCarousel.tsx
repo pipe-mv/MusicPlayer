@@ -1,25 +1,27 @@
-import FavSongTableRow from "./FavSongTableRow";
+import FavoriteSongCard from "./FavoriteSongCard";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import type { Settings } from "react-slick";
-import type { FavoriteSong } from "../types/music";
+import type { FavoriteSong } from "../../domain/types";
 
-interface FavSongsTableProps {
-  mySongs: FavoriteSong[];
-  handleDeleteSong: (id: number) => void;
-  favId: (id: number) => void;
+interface FavoritesCarouselProps {
+  favorites: FavoriteSong[];
+  onDelete: (id: number) => void;
+  onSelect: (id: number) => void;
 }
 
-const FavSongTable = ({ mySongs, handleDeleteSong, favId }: FavSongsTableProps) => {
+const FavoritesCarousel = ({
+  favorites,
+  onDelete,
+  onSelect,
+}: FavoritesCarouselProps) => {
   const navigate = useNavigate();
 
   const handleDirection = (id: number) => {
-    // console.log(id);
     navigate(`/${id}`);
-    favId(id);
+    onSelect(id);
   };
 
   const settings: Settings = {
@@ -28,7 +30,7 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }: FavSongsTableProps) 
     dots: true,
     infinite: true,
     centerPadding: "20px",
-    slidesToShow: mySongs.length - 1 > 7 ? 7 : mySongs.length - 1,
+    slidesToShow: Math.max(1, Math.min(7, favorites.length)),
     swipeToSlide: false,
     afterChange: function (index: number) {
       console.log(
@@ -37,16 +39,15 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }: FavSongsTableProps) 
     },
   };
 
-  // console.log(mySongs);
   return (
     <Slider {...settings}>
-      {mySongs.length > 0 ? (
-        mySongs.map((elem, index) => (
-          <FavSongTableRow
+      {favorites.length > 0 ? (
+        favorites.map((elem, index) => (
+          <FavoriteSongCard
             key={index}
             elem={elem}
             id={index}
-            handleDeleteSong={handleDeleteSong}
+            handleDeleteSong={onDelete}
             handleDirection={handleDirection}
           />
         ))
@@ -59,4 +60,4 @@ const FavSongTable = ({ mySongs, handleDeleteSong, favId }: FavSongsTableProps) 
   );
 };
 
-export default FavSongTable;
+export default FavoritesCarousel;
