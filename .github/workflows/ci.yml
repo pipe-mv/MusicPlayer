@@ -45,6 +45,8 @@ jobs:
 
       - name: Build production bundle
         run: npm run build
+        env:
+          REACT_APP_YOUTUBE_API_KEY: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.YOUTUBE_API_KEY || '' }}
 
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
