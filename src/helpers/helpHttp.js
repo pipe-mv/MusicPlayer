@@ -28,7 +28,11 @@ export const helpHttp = () => {
               statusText: res.statusText || "An error has ocurred!!!",
             })
       )
-      .catch((err) => console.error(err));
+      .catch((err) => ({
+        err: true,
+        status: err.status || "00",
+        statusText: err.statusText || err.message || "An error has occurred",
+      }));
   };
 
   const get = (url, options = {}) => customFetch(url, options);
