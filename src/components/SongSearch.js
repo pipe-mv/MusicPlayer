@@ -64,11 +64,16 @@ const SongSearch = () => {
         setLoading(false);
         return;
       }
-      const playerRes = await Promise.all([helpHttp().get(playerSearch)]);
-      console.log(playerRes);
+      const playerRes = await helpHttp().get(playerSearch);
 
-      setSongYouTube(playerRes[0]);
-      setYouTubeId(playerRes[0].items[0].id.videoId);
+      if (playerRes.err || !playerRes.items?.length) {
+        console.error("YouTube search failed", playerRes);
+        setLoading(false);
+        return;
+      }
+
+      setSongYouTube(playerRes);
+      setYouTubeId(playerRes.items[0].id.videoId);
       setLoading(false);
     };
     fetchData();

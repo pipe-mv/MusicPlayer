@@ -1,42 +1,28 @@
 import ReactPlayer from "react-player";
-import _ from "lodash";
 
 const SongLyric = ({ title, lyric, songYouTube }) => {
-  // console.log(songYouTube);
+  const videos = songYouTube?.items ?? [];
 
   return (
     <div>
       <div>
-        {_.map(songYouTube.items, (item, index) => {
-          /* console.log("item", item); */
-          const { id = {}, snippet = {} } = item;
+        {videos.map((item) => {
+          const { id = {} } = item;
           const { videoId } = id;
-          const { thumbnails = {} } = snippet;
-          const { standard = {} } = thumbnails;
-          /* console.log("item id", videoId); */
+
+          if (!videoId) return null;
 
           return (
-            <div className="player-wrapper" key={index}>
+            <div className="player-wrapper" key={videoId}>
               <ReactPlayer
                 className="react-player"
                 controls
-                key={id}
-                url={`https://www.youtube.com/watch?v=${videoId}`}
+                src={`https://www.youtube.com/watch?v=${videoId}`}
                 width="30%"
-                height={standard.height}
+                height={340}
                 config={{
                   youtube: {
-                    playerVars: { showinfo: 1, hl: "en" },
-                  },
-                  file: {
-                    tracks: [
-                      {
-                        kind: "subtitles",
-                        src: "subs/subtitles.en.vtt",
-                        srcLang: "en",
-                        default: true,
-                      },
-                    ],
+                    hl: "en",
                   },
                 }}
               />
