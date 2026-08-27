@@ -35,27 +35,27 @@ const App = () => {
     <HashRouter
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
-      <img className="logo" src={Logo} alt="Music logo" />
+      <div className="app-shell">
+        <header className="site-header">
+          <img className="logo" src={Logo} alt="MusicPlayer" />
+          <Link to="/" className="home-link" aria-label="Go to song search">
+            <img className="homeIcon" src={HomeLogo} alt="" />
+          </Link>
+        </header>
 
-      <div className="container mt-5 carousel">
-        <FavoritesCarousel
-          favorites={favorites}
-          onDelete={handleDeleteSong}
-          onSelect={(id) => {
-            const selectedSong = favorites[id];
-            if (selectedSong) songSearch.selectSong(selectedSong);
-          }}
-        />
-      </div>
+        <section className="favorites-section" aria-label="Favourite songs">
+          <FavoritesCarousel
+            favorites={favorites}
+            onDelete={handleDeleteSong}
+            onSelect={(id) => {
+              const selectedSong = favorites[id];
+              if (selectedSong) songSearch.selectSong(selectedSong);
+            }}
+          />
+        </section>
 
-      <header>
-        <Link to="/" className="selected">
-          <img className="homeIcon" src={HomeLogo} alt="home" />
-        </Link>
-      </header>
-
-      <article>
-        <Routes>
+        <main className="app-main">
+          <Routes>
           <Route
             path="/"
             element={
@@ -75,10 +75,11 @@ const App = () => {
             element={<FavoriteSongScreen favorites={favorites} />}
           />
           <Route path="*" element={<Error404 />} />
-        </Routes>
-      </article>
+          </Routes>
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </HashRouter>
   );
 };

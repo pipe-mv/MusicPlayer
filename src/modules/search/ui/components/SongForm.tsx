@@ -38,38 +38,39 @@ const SongForm = ({ onSearch, onSave }: SongFormProps) => {
   // console.log(isDisable);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="artist"
-          placeholder="Write a Singer or a Band"
-          onChange={handleChange}
-          value={form.artist}
-        />
-        <input
-          type="text"
-          onChange={handleChange}
-          name="song"
-          value={form.song}
-          placeholder="Write a song"
-        />
-        <button type="submit" className="button">
-          Search for the song
-        </button>
-        {!isDisable ? (
-          <button
-            type="button"
-            onClick={onSave}
-            value="Add to Favorites"
-            className="button"
-          >
-            {" "}
-            Add to Favorites
+    <div className="song-form-wrapper">
+      <form className="song-form" onSubmit={handleSubmit}>
+        <div className="form-fields">
+          <input
+            type="text"
+            name="artist"
+            placeholder="Write a Singer or a Band"
+            onChange={handleChange}
+            value={form.artist}
+          />
+          <input
+            type="text"
+            onChange={handleChange}
+            name="song"
+            value={form.song}
+            placeholder="Write a song"
+          />
+        </div>
+        <div className="form-actions">
+          <button type="submit" className="button">
+            Search for the song
           </button>
-        ) : (
-          <></>
-        )}
+          {!isDisable && (
+            <button
+              type="button"
+              onClick={onSave}
+              value="Add to Favorites"
+              className="button"
+            >
+              Add to Favorites
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

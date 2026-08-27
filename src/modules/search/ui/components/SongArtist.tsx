@@ -6,7 +6,7 @@ interface SongArtistProps {
 
 const SongArtist = ({ artist }: SongArtistProps) => {
   return (
-    <div className="artist">
+    <section className="artist">
       <div className="biography">
         <h3>{artist.strArtist}</h3>
         <p>
@@ -27,8 +27,12 @@ const SongArtist = ({ artist }: SongArtistProps) => {
         )}
         <p>{artist.strBiographyEN}</p>
       </div>
-      <img src={artist.strArtistThumb ?? undefined} alt={artist.strArtist} />
-    </div>
+      <img
+        className="artist-image"
+        src={artist.strArtistThumb ?? undefined}
+        alt={artist.strArtist}
+      />
+    </section>
   );
 };
 

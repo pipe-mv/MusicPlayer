@@ -1,10 +1,8 @@
-import React from "react";
-
 function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="main">
-      <div className="container clearfix">
+      <div className="footer-content">
         <div className="uncopyright">
           <p>
             Uncopyright &copy; {year} <strong>Felipe Marin</strong>

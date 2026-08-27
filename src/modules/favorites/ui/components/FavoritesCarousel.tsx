@@ -25,37 +25,52 @@ const FavoritesCarousel = ({
   };
 
   const settings: Settings = {
-    className: "center",
-    centerMode: true,
+    className: "favorites-slider",
+    centerMode: false,
     dots: true,
-    infinite: true,
-    centerPadding: "20px",
-    slidesToShow: Math.max(1, Math.min(7, favorites.length)),
-    swipeToSlide: false,
-    afterChange: function (index: number) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-      );
-    },
+    infinite: favorites.length > 4,
+    slidesToShow: Math.max(1, Math.min(4, favorites.length)),
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: Math.max(1, Math.min(3, favorites.length)),
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          slidesToShow: Math.max(1, Math.min(2, favorites.length)),
+        },
+      },
+      {
+        breakpoint: 520,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
+
+  if (!favorites.length) {
+    return <p className="favorites-empty">No favourite songs saved yet.</p>;
+  }
 
   return (
     <Slider {...settings}>
-      {favorites.length > 0 ? (
-        favorites.map((elem, index) => (
-          <FavoriteSongCard
-            key={index}
-            elem={elem}
-            id={index}
-            handleDeleteSong={onDelete}
-            handleDirection={handleDirection}
-          />
-        ))
-      ) : (
-        <div className="container mt-5 carousel">
-          <h3>There are not favourite songs</h3>
-        </div>
-      )}
+      {favorites.map((elem, index) => (
+        <FavoriteSongCard
+          key={`${elem.search.artist}-${elem.search.song}-${index}`}
+          elem={elem}
+          id={index}
+          handleDeleteSong={onDelete}
+          handleDirection={handleDirection}
+        />
+      ))}
     </Slider>
   );
 };
