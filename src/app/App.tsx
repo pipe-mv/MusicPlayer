@@ -10,6 +10,7 @@ import Logo from "../images/Logo.png";
 import HomeLogo from "../images/home.png";
 import "../css/App.css";
 
+// Connects search and favorites state to the application routes.
 const App = () => {
   const songSearch = useSongSearch();
   const { favorites, addFavorite, deleteFavorite } = useFavorites();

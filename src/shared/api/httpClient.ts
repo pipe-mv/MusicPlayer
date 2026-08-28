@@ -9,6 +9,7 @@ type HttpOptions = Omit<RequestInit, "body"> & { body?: unknown };
 export const isHttpError = (value: unknown): value is HttpError =>
   typeof value === "object" && value !== null && "err" in value;
 
+// Wraps fetch with JSON handling, timeouts, and normalized error responses.
 export const httpClient = () => {
   const customFetch = async <T>(
     endpoint: string,

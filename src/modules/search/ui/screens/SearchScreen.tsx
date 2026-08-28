@@ -18,6 +18,7 @@ interface SearchScreenProps {
   onSave: () => void;
 }
 
+// Switches the search view between its form, loading, and result states.
 const SearchScreen = ({
   search,
   lyric,

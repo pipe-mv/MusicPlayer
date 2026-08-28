@@ -1,3 +1,4 @@
+// Displays the fallback view for unknown application routes.
 const Error404 = () => {
   return (
     <div>

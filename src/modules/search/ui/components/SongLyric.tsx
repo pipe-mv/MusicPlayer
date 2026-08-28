@@ -6,6 +6,7 @@ interface SongLyricProps {
   songYouTube: YouTubeSearchResponse;
 }
 
+// Presents matching YouTube videos alongside the song lyrics.
 const SongLyric = ({ lyric, songYouTube }: SongLyricProps) => {
   const videos = songYouTube?.items ?? [];
 
