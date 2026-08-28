@@ -122,7 +122,16 @@ a {
   height: 100%;
 }
 
+.card-image {
+  display: block;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+
 .card-image img {
+  display: block;
   object-fit: cover;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
@@ -142,6 +151,7 @@ a {
   justify-content: center;
   gap: 0.75rem;
   list-style: none;
+  pointer-events: none;
 }
 
 .social-icons button {
@@ -164,6 +174,7 @@ a {
 .card:focus-within .social-icons button {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .social-icons button:hover,
@@ -416,19 +427,32 @@ footer.main a:hover {
 }
 
 @media (hover: none) {
-  .card .card-image img {
-    opacity: 0.65;
-  }
-
   .social-icons {
     align-items: flex-start;
     justify-content: flex-end;
     padding: 0.75rem;
   }
 
-  .social-icons button {
+  .card:not(.is-actions-visible) .card-image img {
     opacity: 1;
     transform: none;
+  }
+
+  .card:not(.is-actions-visible) .social-icons button {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    pointer-events: none;
+  }
+
+  .card.is-actions-visible .card-image img {
+    opacity: 0.45;
+    transform: scale(1.04);
+  }
+
+  .card.is-actions-visible .social-icons button {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
   }
 }
 

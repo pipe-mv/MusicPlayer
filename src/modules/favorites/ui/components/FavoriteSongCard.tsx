@@ -1,5 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState } from "react";
 import type { FavoriteSong } from "../../domain/types";
 
 interface FavoriteSongCardProps {
@@ -15,17 +16,26 @@ const FavoriteSongCard = ({
   handleDeleteSong,
   handleDirection,
 }: FavoriteSongCardProps) => {
+  const [areActionsVisible, setAreActionsVisible] = useState(false);
   const { bio, search } = elem;
 
   const avatar = bio.artists?.[0]?.strArtistThumb ?? "";
+  const actionsId = `favorite-actions-${id}`;
 
   return (
     <div className="card-wrapper">
-      <div className="card">
-        <div className="card-image">
+      <div className={`card${areActionsVisible ? " is-actions-visible" : ""}`}>
+        <button
+          type="button"
+          className="card-image"
+          aria-label={`Show actions for ${search.song} by ${search.artist}`}
+          aria-controls={actionsId}
+          aria-expanded={areActionsVisible}
+          onClick={() => setAreActionsVisible((isVisible) => !isVisible)}
+        >
           <img src={avatar} alt={search.artist} />
-        </div>
-        <ul className="social-icons">
+        </button>
+        <ul className="social-icons" id={actionsId}>
           <li>
             <button
               type="button"
