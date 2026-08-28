@@ -4,6 +4,7 @@ interface SongArtistProps {
   artist: Artist;
 }
 
+// Presents the selected artist's biography and artwork.
 const SongArtist = ({ artist }: SongArtistProps) => {
   return (
     <section className="artist">

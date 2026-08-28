@@ -4,6 +4,7 @@ interface MessageProps {
   msg: string;
 }
 
+// Displays a prominent application message with supported inline markup.
 const Message = ({ msg }: MessageProps) => {
   const styles: CSSProperties = {
     padding: "1rem",

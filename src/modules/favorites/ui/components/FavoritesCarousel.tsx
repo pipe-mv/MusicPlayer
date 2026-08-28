@@ -14,6 +14,7 @@ interface FavoritesCarouselProps {
   onSelect: (id: number) => void;
 }
 
+// Displays saved songs in a responsive carousel with bounded pagination.
 const FavoritesCarousel = ({
   favorites,
   onDelete,

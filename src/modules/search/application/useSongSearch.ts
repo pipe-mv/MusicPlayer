@@ -11,6 +11,7 @@ import type {
   YouTubeSearchResponse,
 } from "../domain/types";
 
+// Coordinates artist, lyrics, and YouTube requests for a song search.
 export const useSongSearch = () => {
   const [search, setSearch] = useState<SongSearchData | null>(null);
   const [lyric, setLyric] = useState<LyricResponse | null>(null);

@@ -5,6 +5,7 @@ import {
 } from "../infrastructure/favoritesStorage";
 import type { FavoriteSong } from "../domain/types";
 
+// Owns the favorites collection and keeps it synchronized with storage.
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<FavoriteSong[]>(loadFavorites);
 

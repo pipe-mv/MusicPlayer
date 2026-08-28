@@ -10,6 +10,7 @@ interface FavoriteSongCardProps {
   handleDirection: (id: number) => void;
 }
 
+// Presents one saved song with touch-friendly view and delete actions.
 const FavoriteSongCard = ({
   id,
   elem,

@@ -3,6 +3,7 @@ import type { YouTubeSearchResponse } from "../domain/types";
 
 const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
+// Finds the first three matching music videos through the YouTube Data API.
 export const searchYouTube = (artist: string, song: string) => {
   const query = new URLSearchParams({
     part: "snippet",

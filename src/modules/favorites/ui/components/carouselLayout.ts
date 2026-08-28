@@ -4,6 +4,7 @@ export interface CarouselLayout {
   slidesToShow: number;
 }
 
+// Selects carousel density and controls for the current viewport width.
 export const getCarouselLayout = (viewportWidth: number): CarouselLayout => {
   if (viewportWidth <= 520) {
     return { arrows: false, dotLimit: 5, slidesToShow: 2.5 };
@@ -20,6 +21,7 @@ export const getCarouselLayout = (viewportWidth: number): CarouselLayout => {
   return { arrows: true, dotLimit: 10, slidesToShow: 4 };
 };
 
+// Keeps the active pagination dot inside a bounded moving window.
 export const getDotWindowStart = (
   activeIndex: number,
   dotCount: number,

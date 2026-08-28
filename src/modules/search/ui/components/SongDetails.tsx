@@ -15,9 +15,8 @@ interface SongDetailsProps {
   songYouTube: YouTubeSearchResponse | null;
 }
 
+// Composes videos, lyrics, and artist details for a completed search.
 const SongDetails = ({ search, lyric, bio, songYouTube }: SongDetailsProps) => {
-  // console.log(search, lyric, bio, songYouTube);
-
   if (!lyric || !bio) return null;
   return (
     <div className="song-details">

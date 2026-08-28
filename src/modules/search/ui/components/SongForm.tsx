@@ -11,6 +11,7 @@ const initialForm: SongSearchData = {
   song: "",
 };
 
+// Collects a song query and exposes search and save actions.
 const SongForm = ({ onSearch, onSave }: SongFormProps) => {
   const [form, setForm] = useState<SongSearchData>(initialForm);
   const [isDisable, setIsDisable] = useState(true);
@@ -34,8 +35,6 @@ const SongForm = ({ onSearch, onSave }: SongFormProps) => {
     setForm(initialForm);
     setIsDisable(false);
   };
-
-  // console.log(isDisable);
 
   return (
     <div className="song-form-wrapper">

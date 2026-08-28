@@ -6,6 +6,7 @@ interface FavoriteSongScreenProps {
   favorites: FavoriteSong[];
 }
 
+// Resolves a saved song from the route and presents its full details.
 const FavoriteSongScreen = ({ favorites }: FavoriteSongScreenProps) => {
   const { id } = useParams<{ id: string }>();
   const songIndex = Number(id);
