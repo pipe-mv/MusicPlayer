@@ -1,12 +1,12 @@
 import FavoriteSongCard from "./FavoriteSongCard";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Children, isValidElement, useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import type { Settings } from "react-slick";
 import type { FavoriteSong } from "../../domain/types";
-import { getCarouselLayout } from "./carouselLayout";
+import { getCarouselLayout, getDotWindowStart } from "./carouselLayout";
 
 interface FavoritesCarouselProps {
   favorites: FavoriteSong[];
@@ -40,6 +40,21 @@ const FavoritesCarousel = ({
     Math.min(layout.slidesToShow, favorites.length),
   );
   const settings: Settings = {
+    appendDots: (dots) => {
+      const dotItems = Children.toArray(dots);
+      const activeIndex = dotItems.findIndex(
+        (dot) =>
+          isValidElement<{ className?: string }>(dot) &&
+          dot.props.className?.includes("slick-active"),
+      );
+      const start = getDotWindowStart(
+        Math.max(0, activeIndex),
+        dotItems.length,
+        layout.dotLimit,
+      );
+
+      return <ul>{dotItems.slice(start, start + layout.dotLimit)}</ul>;
+    },
     arrows: layout.arrows,
     className: "favorites-slider",
     centerMode: false,
