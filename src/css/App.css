@@ -233,6 +233,9 @@ a {
 
 .favorites-slider .slick-dots {
   bottom: 0;
+  display: flex !important;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .favorites-slider .slick-dots li button::before {
