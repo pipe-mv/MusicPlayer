@@ -1,10 +1,12 @@
 import FavoriteSongCard from "./FavoriteSongCard";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import type { Settings } from "react-slick";
 import type { FavoriteSong } from "../../domain/types";
+import { getCarouselLayout } from "./carouselLayout";
 
 interface FavoritesCarouselProps {
   favorites: FavoriteSong[];
@@ -18,42 +20,34 @@ const FavoritesCarousel = ({
   onSelect,
 }: FavoritesCarouselProps) => {
   const navigate = useNavigate();
+  const [viewportWidth, setViewportWidth] = useState(() => window.innerWidth);
+
+  useEffect(() => {
+    const updateViewportWidth = () => setViewportWidth(window.innerWidth);
+
+    window.addEventListener("resize", updateViewportWidth);
+    return () => window.removeEventListener("resize", updateViewportWidth);
+  }, []);
 
   const handleDirection = (id: number) => {
     navigate(`/${id}`);
     onSelect(id);
   };
 
+  const layout = getCarouselLayout(viewportWidth);
+  const visibleSlides = Math.max(
+    1,
+    Math.min(layout.slidesToShow, favorites.length),
+  );
   const settings: Settings = {
+    arrows: layout.arrows,
     className: "favorites-slider",
     centerMode: false,
     dots: true,
     infinite: favorites.length > 4,
-    slidesToShow: Math.max(1, Math.min(4, favorites.length)),
+    slidesToShow: visibleSlides,
     slidesToScroll: 1,
     swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: Math.max(1, Math.min(3, favorites.length)),
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          slidesToShow: Math.max(1, Math.min(2, favorites.length)),
-        },
-      },
-      {
-        breakpoint: 520,
-        settings: {
-          arrows: false,
-          slidesToShow: 1,
-        },
-      },
-    ],
   };
 
   if (!favorites.length) {
@@ -61,7 +55,7 @@ const FavoritesCarousel = ({
   }
 
   return (
-    <Slider {...settings}>
+    <Slider key={`${layout.slidesToShow}-${layout.arrows}`} {...settings}>
       {favorites.map((elem, index) => (
         <FavoriteSongCard
           key={`${elem.search.artist}-${elem.search.song}-${index}`}
